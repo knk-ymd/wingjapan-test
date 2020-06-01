@@ -12,7 +12,10 @@ exports.execMain = function(event, msgTxt) {
 	}
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "リスト") {
-    return exports.replyMsg(event.replyToken, exports.getList());
+    let ret = JSON.stringify(exports.getList());
+    console.log(exports.getList());
+    console.log(ret);
+    return exports.replyMsg(event.replyToken, ret);
   }
 }
 //------------------------------------------------------
@@ -33,7 +36,7 @@ exports.getList = async function (){
       arr.push(str);
 
     }
-    return arr.join("\n");
+    return arr;
   }).catch(e => console.error('[ERROR]getList\n ' + e.stack));
 
 }
