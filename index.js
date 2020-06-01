@@ -46,6 +46,7 @@ exports.execMain = function(event, msgTxt) {
   // --------- あいさつ ---------
   if (msgTxt == "こんにちは") {
     return msgExec.replyMsg(event.replyToken, "こんちは");
+	}
 /*
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "うりかけ") {
