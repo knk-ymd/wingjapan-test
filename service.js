@@ -25,15 +25,15 @@ exports.execMain = function(event, msgTxt) {
   8888888888888888888888888888888888888888888888888888888*/
 exports.getList = async function (){
 
-  let arr = [];
   await envset.dataBase.query(exports.q_sel_list).then(res => {
+    let arr = [];
     for (let row of res.rows) {
-      arr.push(row);
+      arr.push(row.id + " : " + row.name);
 
     }
+    return arr;
   }).catch(e => console.error('[ERROR]getList\n ' + e.stack));
 
-  return arr;
 }
 // ####### SELECT #########
 //------ Query：LineID→ユーザIDコマンド
