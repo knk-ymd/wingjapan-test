@@ -36,11 +36,10 @@ exports.getList = async function (event){
     var arr = [];
     for (let row of res.rows) {
       let str = row.id + " : " + row.name + " : " + row.remark;
-      console.log(str);
       arr.push(str);
 
     }
-    return exports.replyMsg(event.replyToken, JSON.stringify(arr));
+    return exports.replyMsg(event.replyToken, arr.join("\n"));
     // return arr;
   }).catch(e => console.error('[ERROR]getList\n ' + e.stack));
 
