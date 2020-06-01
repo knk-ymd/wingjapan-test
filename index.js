@@ -15,8 +15,6 @@ console.log(formatted + " ..... connected......");
 server.listen(process.env.PORT || 3000);
 // ルーター設定
 server.get('/', function (req, res) {
-console.log(req + " ..... req......");
-	res.sendStatus(200);
 	res.send('hello world')
 })
 
@@ -24,7 +22,7 @@ console.log(req + " ..... req......");
 // =========================================
 // ========== Main処理 =====================
 // =========================================
-server.post('/bot/webhook', envset.getMiddleware(), (req, res, next) => {
+server.post('/bot/webhook', line.middleware(exports.line_config), (req, res, next) => {
 	// 先行してステータスコード200でレスポンスする。
 	res.sendStatus(200);
 
@@ -35,11 +33,10 @@ server.post('/bot/webhook', envset.getMiddleware(), (req, res, next) => {
 	// イベントオブジェクトを順次処理。
 	req.body.events.forEach((event) => {
 		// この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
-console.log(event.type + " ..... event.type......");
 		if (event.type == "message" && event.message.type == "text") {
 
-      let msgTxt = event.message.text.trim();
-      events_processed.push(service.execMain(event, msgTxt));
+		      let msgTxt = event.message.text.trim();
+		      events_processed.push(service.execMain(event, msgTxt));
 
 		}
 	});
