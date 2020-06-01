@@ -12,10 +12,12 @@ exports.execMain = function(event, msgTxt) {
 	}
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "リスト") {
-    let ret = JSON.stringify(exports.getList());
-    console.log(exports.getList());
-    console.log(ret);
-    return exports.replyMsg(event.replyToken, ret);
+    exports.getList().then(retVal => {
+
+      console.log(retVal);
+      console.log(JSON.stringify(retVal));
+      return exports.replyMsg(event.replyToken, JSON.stringify(retVal));
+    });
   }
 }
 //------------------------------------------------------
