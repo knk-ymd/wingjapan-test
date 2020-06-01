@@ -19,26 +19,10 @@ server.get('/', function (req, res) {
 	res.send('hello world')
 });
 
-server.post('/', function (req, res) {
-res.sendStatus(200);
-	// すべてのイベント処理のプロミスを格納する配列。
-	let events_processed = [];
-
-	// イベントオブジェクトを順次処理。
-	req.body.events.forEach((event) => {
-		// この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
-		if (event.type == "message" && event.message.type == "text") {
-
-      let msgTxt = event.message.text.trim();
-      events_processed.push(service.execMain(event, msgTxt));
-
-		}
-	});
-});
 // =========================================
 // ========== Main処理 =====================
 // =========================================
-server.post('/bot/webhook', lineSDK.middleware(envset.line_config), (req, res, next) => {
+server.post('/', lineSDK.middleware(envset.line_config), (req, res, next) => {
 	// 先行してステータスコード200でレスポンスする。
 	res.sendStatus(200);
 
