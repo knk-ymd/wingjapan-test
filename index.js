@@ -16,6 +16,7 @@ server.listen(process.env.PORT || 3000);
 // ルーター設定
 server.get('/', function (req, res) {
 console.log(req + " ..... req......");
+	res.sendStatus(200);
 	res.send('hello world')
 })
 
