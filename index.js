@@ -35,7 +35,7 @@ server.post('/', lineSDK.middleware(envset.line_config), (req, res, next) => {
 		if (event.type == "message" && event.message.type == "text") {
 
       let msgTxt = event.message.text.trim();
-      events_processed.push(service.execMain(event, msgTxt));
+      events_processed.push(execMain(event, msgTxt));
 
 		}
 	});
