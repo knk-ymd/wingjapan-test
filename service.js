@@ -10,20 +10,40 @@ exports.execMain = function(event, msgTxt) {
   if (msgTxt == "こんにちは") {
     return exports.replyMsg(event.replyToken, "こんちは");
 	}
-/*
   // --------- うりかけ一覧 表示 ---------
-  if (msgTxt == "うりかけ") {
-    DAO.showOtherTask(
-      event.source.groupId,
-      event.replyToken,
-      46, // うりかけタスク
-      "＜うりかけ一覧＞\n"
-    );
+  if (msgTxt == "リスト") {
+    let retVal = JSON.stringify(exports.getList());
+    return exports.replyMsg(event.replyToken, retVal);
   }
-*/
 }
+//------------------------------------------------------
+//---------------  DAO  -----------------------------
+//------------------------------------------------------
 
+/* 8888888888888888888888888888888888888888888888888888888
+ * 8888888   ユーザID取得 （ユーザ名から）    88888888888888
+  8888888888888888888888888888888888888888888888888888888*/
+exports.getList = async function (){
 
+  await envset.dataBase.query(SQL.q_sel_list).then(res => {
+    let arr = [];
+    for (let row of res.rows) {
+      arr.push(row);
+
+    }
+  }).catch(e => console.error('[ERROR]getList\n ' + e.stack));
+
+  return arr;
+}
+// ####### SELECT #########
+//------ Query：LineID→ユーザIDコマンド
+exports.q_sel_list = {
+  text: 'SELECT * FROM home_master ;',
+  values: [],
+};
+//------------------------------------------------------
+//---------------  MESSAGE  -----------------------------
+//------------------------------------------------------
 
 // LINE replyMessage 呼び出し（現状は単数msg、テキストmsg限定）
 exports.replyMsg = function(token, msg) {
