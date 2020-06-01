@@ -12,7 +12,7 @@ exports.execMain = function(event, msgTxt) {
 	}
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "リスト") {
-    return exports.replyMsg(event.replyToken, JSON.stringify(exports.getList()));
+    return exports.replyMsg(event.replyToken, exports.getList());
   }
 }
 //------------------------------------------------------
@@ -28,7 +28,7 @@ exports.getList = async function (){
     console.log(res.rowCount + " 件　発見");
     var arr = [];
     for (let row of res.rows) {
-      let str = row.id + " : " + row.name;
+      let str = row.id + " : " + row.name + " : " + row.remark;
       console.log(str);
       arr.push(str);
 
@@ -40,7 +40,7 @@ exports.getList = async function (){
 // ####### SELECT #########
 //------ Query：LineID→ユーザIDコマンド
 exports.q_sel_list = {
-  text: 'SELECT * FROM test.home_master ;',
+  text: 'SELECT * FROM test.home_master order by id;',
   values: [],
 };
 //------------------------------------------------------
