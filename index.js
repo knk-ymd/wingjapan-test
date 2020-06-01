@@ -5,6 +5,7 @@ const envset = require('./envset');
 
 const server = require("express")();
 const date = require('date-utils');
+const lineSDK = require("@line/bot-sdk");
 
 var dt = new Date();
 var formatted = dt.toFormat("YYYY/MM/DD HH24:MI:SS");
@@ -21,7 +22,7 @@ server.get('/', function (req, res) {
 // =========================================
 // ========== Main処理 =====================
 // =========================================
-server.post('/bot/webhook', line.middleware(envset.line_config), (req, res, next) => {
+server.post('/bot/webhook', lineSDK.middleware(envset.line_config), (req, res, next) => {
 	// 先行してステータスコード200でレスポンスする。
 	res.sendStatus(200);
 
