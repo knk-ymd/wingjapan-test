@@ -12,7 +12,7 @@ exports.execMain = function(event, msgTxt) {
 	}
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "リスト") {
-    exports.getList();
+    exports.getList(event);
     // await exports.getList().then(retVal => {
     //
     //   console.log("retVal LENGTH : " + retVal.length);
@@ -29,7 +29,7 @@ exports.execMain = function(event, msgTxt) {
 /* 8888888888888888888888888888888888888888888888888888888
  * 8888888   ユーザID取得 （ユーザ名から）    88888888888888
   8888888888888888888888888888888888888888888888888888888*/
-exports.getList = async function (){
+exports.getList = async function (event){
 
   await envset.dataBase.query(exports.q_sel_list).then(res => {
     console.log(res.rowCount + " 件　発見");
