@@ -15,8 +15,10 @@ console.log(formatted + " ..... connected......");
 server.listen(process.env.PORT || 3000);
 // ルーター設定
 server.get('/', function (req, res) {
+console.log(req + " ..... req......");
 	res.send('hello world')
 })
+
 
 // =========================================
 // ========== Main処理 =====================
@@ -28,9 +30,11 @@ server.post('/bot/webhook', envset.getMiddleware(), (req, res, next) => {
 	// すべてのイベント処理のプロミスを格納する配列。
 	let events_processed = [];
 
+	
 	// イベントオブジェクトを順次処理。
 	req.body.events.forEach((event) => {
 		// この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
+console.log(event.type + " ..... event.type......");
 		if (event.type == "message" && event.message.type == "text") {
 
       let msgTxt = event.message.text.trim();
