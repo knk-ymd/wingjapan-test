@@ -2,6 +2,7 @@ require('dotenv').config();
 // -----------------------------------------------------------------------------
 // モジュールのインポート
 const envset = require('./envset');
+const service = require('./service');
 
 const server = require("express")();
 const date = require('date-utils');
@@ -35,28 +36,9 @@ server.post('/', lineSDK.middleware(envset.line_config), (req, res, next) => {
 		if (event.type == "message" && event.message.type == "text") {
 
       let msgTxt = event.message.text.trim();
-      events_processed.push(execMain(event, msgTxt));
+      events_processed.push(service.execMain(event, msgTxt));
 
 		}
 	});
 
 });
-
-execMain = function(event, msgTxt) {
-
-  // --------- あいさつ ---------
-  if (msgTxt == "こんにちは") {
-    return msgExec.replyMsg(event.replyToken, "こんちは");
-	}
-/*
-  // --------- うりかけ一覧 表示 ---------
-  if (msgTxt == "うりかけ") {
-    DAO.showOtherTask(
-      event.source.groupId,
-      event.replyToken,
-      46, // うりかけタスク
-      "＜うりかけ一覧＞\n"
-    );
-  }
-*/
-}
