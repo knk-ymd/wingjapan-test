@@ -38,7 +38,7 @@ exports.getList = async function (){
 // ####### SELECT #########
 //------ Query：LineID→ユーザIDコマンド
 exports.q_sel_list = {
-  text: 'SELECT * FROM home_master ;',
+  text: 'SELECT * FROM test."home_master" ;',
   values: [],
 };
 //------------------------------------------------------
