@@ -12,7 +12,7 @@ exports.execMain = function(event, msgTxt) {
 	}
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "リスト") {
-    return exports.replyMsg(event.replyToken, JSON.stringify(exports.getList());
+    return exports.replyMsg(event.replyToken, JSON.stringify(exports.getList()));
   }
 }
 //------------------------------------------------------
