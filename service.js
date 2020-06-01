@@ -25,8 +25,8 @@ exports.execMain = function(event, msgTxt) {
   8888888888888888888888888888888888888888888888888888888*/
 exports.getList = async function (){
 
+  let arr = [];
   await envset.dataBase.query(exports.q_sel_list).then(res => {
-    let arr = [];
     for (let row of res.rows) {
       arr.push(row);
 
@@ -38,7 +38,7 @@ exports.getList = async function (){
 // ####### SELECT #########
 //------ Query：LineID→ユーザIDコマンド
 exports.q_sel_list = {
-  text: 'SELECT * FROM test."home_master" ;',
+  text: 'SELECT * FROM test.home_master ;',
   values: [],
 };
 //------------------------------------------------------
