@@ -26,9 +26,11 @@ exports.getList = async function (){
 
   await envset.dataBase.query(exports.q_sel_list).then(res => {
     console.log(res.rowCount + " 件　発見");
-    let arr = [];
+    var arr = [];
     for (let row of res.rows) {
-      arr.push(row.id + " : " + row.name);
+      let str = row.id + " : " + row.name;
+      console.log(str);
+      arr.push(str);
 
     }
     return arr;
