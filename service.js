@@ -25,7 +25,7 @@ exports.execMain = function(event, msgTxt) {
   8888888888888888888888888888888888888888888888888888888*/
 exports.getList = async function (){
 
-  await envset.dataBase.query(SQL.q_sel_list).then(res => {
+  await envset.dataBase.query(exports.q_sel_list).then(res => {
     let arr = [];
     for (let row of res.rows) {
       arr.push(row);
