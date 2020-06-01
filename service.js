@@ -12,8 +12,7 @@ exports.execMain = function(event, msgTxt) {
 	}
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "リスト") {
-    let retVal = JSON.stringify(exports.getList());
-    return exports.replyMsg(event.replyToken, retVal);
+    return exports.replyMsg(event.replyToken, JSON.stringify(exports.getList());
   }
 }
 //------------------------------------------------------
@@ -26,6 +25,7 @@ exports.execMain = function(event, msgTxt) {
 exports.getList = async function (){
 
   await envset.dataBase.query(exports.q_sel_list).then(res => {
+    console.log(res.rowCount + " 件　発見");
     let arr = [];
     for (let row of res.rows) {
       arr.push(row.id + " : " + row.name);
