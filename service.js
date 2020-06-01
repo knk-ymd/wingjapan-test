@@ -33,7 +33,7 @@ exports.getList = async function (){
       arr.push(str);
 
     }
-    return arr;
+    return arr.join("\n");
   }).catch(e => console.error('[ERROR]getList\n ' + e.stack));
 
 }
