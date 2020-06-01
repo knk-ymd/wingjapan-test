@@ -42,7 +42,7 @@ server.post('/', lineSDK.middleware(envset.line_config), (req, res, next) => {
 
 });
 
-exports.execMain = function(event, msgTxt) {
+execMain = function(event, msgTxt) {
 
   // --------- あいさつ ---------
   if (msgTxt == "こんにちは") {
