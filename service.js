@@ -12,12 +12,14 @@ exports.execMain = function(event, msgTxt) {
 	}
   // --------- うりかけ一覧 表示 ---------
   if (msgTxt == "リスト") {
-    exports.getList().then(retVal => {
-
-      console.log(retVal);
-      console.log(JSON.stringify(retVal));
-      return exports.replyMsg(event.replyToken, JSON.stringify(retVal));
-    });
+    exports.getList();
+    // await exports.getList().then(retVal => {
+    //
+    //   console.log("retVal LENGTH : " + retVal.length);
+    //   console.log(retVal);
+    //   console.log(JSON.stringify(retVal));
+    //   return exports.replyMsg(event.replyToken, "リスト");
+    // });
   }
 }
 //------------------------------------------------------
@@ -38,7 +40,8 @@ exports.getList = async function (){
       arr.push(str);
 
     }
-    return arr;
+    return exports.replyMsg(event.replyToken, JSON.stringify(arr));
+    // return arr;
   }).catch(e => console.error('[ERROR]getList\n ' + e.stack));
 
 }
