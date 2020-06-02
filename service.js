@@ -23,7 +23,7 @@ exports.execMain = function(event, msgTxt) {
   }
   if (msgTxt == "LIFF" || msgTxt == "liff") {
     return exports.replyMsg(event.replyToken, "https://liff.line.me/1654295885-XJ8M6OaJ");
-
+  }
 }
 //------------------------------------------------------
 //---------------  DAO  -----------------------------
