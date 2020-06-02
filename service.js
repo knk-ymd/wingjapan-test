@@ -11,7 +11,7 @@ exports.execMain = function(event, msgTxt) {
     return exports.replyMsg(event.replyToken, "こんちは");
 	}
   // --------- テキスト 表示 ---------
-  if (msgTxt == "リスト") {
+  if (msgTxt == "リスト" || msgTxt == "りすと") {
     exports.getList(event);
     // await exports.getList().then(retVal => {
     //
