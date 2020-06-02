@@ -10,7 +10,7 @@ exports.execMain = function(event, msgTxt) {
   if (msgTxt == "こんにちは") {
     return exports.replyMsg(event.replyToken, "こんちは");
 	}
-  // --------- うりかけ一覧 表示 ---------
+  // --------- テキスト 表示 ---------
   if (msgTxt == "リスト") {
     exports.getList(event);
     // await exports.getList().then(retVal => {
@@ -21,6 +21,9 @@ exports.execMain = function(event, msgTxt) {
     //   return exports.replyMsg(event.replyToken, "リスト");
     // });
   }
+  if (msgTxt == "LIFF" || msgTxt == "liff") {
+    return exports.replyMsg(event.replyToken, "https://liff.line.me/1654295885-XJ8M6OaJ");
+
 }
 //------------------------------------------------------
 //---------------  DAO  -----------------------------
