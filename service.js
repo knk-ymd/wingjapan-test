@@ -8,7 +8,7 @@ exports.execMain = function(event, msgTxt) {
 
   // --------- あいさつ ---------
   if (msgTxt == "こんにちは") {
-    return exports.replyMsg(event.replyToken, "こんちは");
+    return exports.replyMsg(event.replyToken, "こんちは！");
 	}
   // --------- テキスト 表示 ---------
   if (msgTxt == "リスト" || msgTxt == "りすと") {
